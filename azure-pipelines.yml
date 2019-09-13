@@ -28,7 +28,7 @@ jobs:
   - script: pip install -e .
     displayName: 'Install UMAP'
 
-  - script: pytest .
+  - script: pytest umap --doctest-modules --junitxml=junit/test-results.xml --cov=umap --cov-report=xml --cov-report=html
     displayName: 'Run pytest'
 
   - task: PublishTestResults@2
@@ -37,9 +37,3 @@ jobs:
       testResultsFiles: '**/test-*.xml'
       failTaskOnFailedTests: true
       testRunTitle: 'Publish test results for $(python.version) Ubuntu-16.04'
-
-  # - task: PublishTestResults@2
-  #   condition: succeededOrFailed()
-  #   inputs:
-  #     testResultsFiles: '**/test-*.xml'
-  #     testRunTitle: 'Publish test results for Python $(python.version)'

@@ -1,5 +1,5 @@
 jobs:
-- job: 'Format with black'
+- job: 'Format_with_black'
   pool:
     vmImage: 'ubuntu-16.04' # other options: 'macOS-10.13', 'vs2017-win2016'
   strategy:
@@ -21,8 +21,9 @@ jobs:
   - script: black --check --diff umap
     displayName: 'Run black'
 
-- job: 'Test & Coverage'
-  dependsOn: 'Format with black'
+- job: 'Test_and_Coverage'
+  dependsOn: 'Format_with_black'
+  condition: succeeded()
   pool:
     vmImage: 'ubuntu-16.04' # other options: 'macOS-10.13', 'vs2017-win2016'
   strategy:

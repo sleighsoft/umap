@@ -31,7 +31,7 @@ jobs:
   - script: pytest .
     displayName: 'Run pytest'
 
-    - task: PublishTestResults@2
+  - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
       testResultsFiles: '**/test-*.xml'
